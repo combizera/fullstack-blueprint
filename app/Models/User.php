@@ -11,13 +11,6 @@ class User extends Model
     use HasFactory;
 
     /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -45,8 +38,6 @@ class User extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'created_at' => 'timestamp',
-        'updated_at' => 'timestamp',
     ];
 
     public function posts(): HasMany

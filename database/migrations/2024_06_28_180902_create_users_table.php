@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
-
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('tag_name', 100)->unique();
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->string('firstName', 100);
+            $table->string('lastName', 100);
+            $table->string('email', 50)->unique();
+            $table->string('password', 255);
+            $table->timestamps();
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('users');
     }
 };

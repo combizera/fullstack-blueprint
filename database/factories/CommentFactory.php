@@ -26,8 +26,6 @@ class CommentFactory extends Factory
             'content' => $this->faker->paragraphs(3, true),
             'user_id' => User::factory(),
             'post_id' => Post::factory(),
-            'created_at' => $this->faker->dateTime(),
-            'updated_at' => $this->faker->dateTime(),
         ];
     }
 }

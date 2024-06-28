@@ -12,13 +12,6 @@ class Post extends Model
     use HasFactory;
 
     /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -40,8 +33,6 @@ class Post extends Model
         'id' => 'integer',
         'user_id' => 'integer',
         'tag_id' => 'integer',
-        'created_at' => 'timestamp',
-        'updated_at' => 'timestamp',
     ];
 
     public function user(): BelongsTo

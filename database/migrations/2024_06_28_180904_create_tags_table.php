@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->unsigned();
-            $table->foreignId('post_id')->constrained()->cascadeOnDelete()->unsigned();
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->string('tag_name', 100)->unique();
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('tags');
     }
 };

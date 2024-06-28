@@ -28,8 +28,6 @@ class PostFactory extends Factory
             'content' => $this->faker->paragraphs(3, true),
             'user_id' => User::factory(),
             'tag_id' => Tag::factory(),
-            'created_at' => $this->faker->dateTime(),
-            'updated_at' => $this->faker->dateTime(),
         ];
     }
 }

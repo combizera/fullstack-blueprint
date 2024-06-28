@@ -22,8 +22,6 @@ class TagFactory extends Factory
     {
         return [
             'tag_name' => $this->faker->regexify('[A-Za-z0-9]{100}'),
-            'created_at' => $this->faker->dateTime(),
-            'updated_at' => $this->faker->dateTime(),
         ];
     }
 }
