@@ -4,9 +4,7 @@ models:
     lastName: string:100
     email: string:50 unique
     password: string:255
-    created_at: timestamp
-    updated_at: timestamp
-    timestamps: false
+    timestamps: true
     relationships:
       hasMany: Post, Comment
 
@@ -16,26 +14,21 @@ models:
     content: text
     user_id: id unsigned foreign ondelete:cascade
     tag_id: id unsigned foreign nullable
-    created_at: timestamp
-    updated_at: timestamp
-    timestamps: false
+    timestamps: true
     relationships:
       belongsTo: User
       hasMany: Tag
 
   Tag:
     tag_name: string:100 unique
-    created_at: timestamp
-    updated_at: timestamp
-    timestamps: false
+    timestamps: true
     relationships:
       belongsToMany: Post
+
   Comment:
     content: text
     user_id: id unsigned foreign ondelete:cascade
     post_id: id unsigned foreign ondelete:cascade
-    created_at: timestamp
-    updated_at: timestamp
-    timestamps: false
+    timestamps: true
     relationships:
       belongsTo: User, Post
