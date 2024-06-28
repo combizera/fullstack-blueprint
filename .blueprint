@@ -1,17 +1,26 @@
 created:
+    - app/Http/Controllers/PostController.php
     - database/factories/UserFactory.php
     - database/factories/PostFactory.php
     - database/factories/TagFactory.php
     - database/factories/CommentFactory.php
-    - database/migrations/2024_06_28_180902_create_users_table.php
-    - database/migrations/2024_06_28_180903_create_posts_table.php
-    - database/migrations/2024_06_28_180904_create_tags_table.php
-    - database/migrations/2024_06_28_180905_create_comments_table.php
-    - database/migrations/2024_06_28_180906_create_post_tag_table.php
+    - database/migrations/2024_06_28_201200_create_users_table.php
+    - database/migrations/2024_06_28_201201_create_posts_table.php
+    - database/migrations/2024_06_28_201202_create_tags_table.php
+    - database/migrations/2024_06_28_201203_create_comments_table.php
+    - database/migrations/2024_06_28_201204_create_post_tag_table.php
     - app/Models/User.php
     - app/Models/Post.php
     - app/Models/Tag.php
     - app/Models/Comment.php
+    - tests/Feature/Http/Controllers/PostControllerTest.php
+    - app/Http/Requests/PostStoreRequest.php
+    - app/Mail/ReviewPost.php
+    - resources/views/emails/review-post.blade.php
+    - resources/views/post/index.blade.php
+    - resources/views/post/create.blade.php
+updated:
+    - routes/web.php
 models:
     User: { firstName: 'string:100', lastName: 'string:100', email: 'string:50 unique', password: 'string:255', timestamps: timestamps, relationships: { hasMany: 'Post, Comment' } }
     Post: { title: 'string:100', slug: 'string:150 unique', content: text, user_id: 'id unsigned foreign ondelete:cascade', tag_id: 'id unsigned foreign nullable', timestamps: timestamps, relationships: { belongsTo: User, hasMany: Tag } }

@@ -32,3 +32,20 @@ models:
     timestamps: true
     relationships:
       belongsTo: User, Post
+
+controllers:
+  Post:
+    index:
+      query: paginate:10
+      render: post.index with:posts
+    create:
+      render: post.create
+    store:
+      validate: title, slug
+      save: post
+      send: ReviewPost to:post.author with:post
+      redirect: post.create
+    destroy:
+      delete: post
+      flash: post.message
+      redirect: post.create
