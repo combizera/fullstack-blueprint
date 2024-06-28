@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class User extends Model
+class Comment extends Model
 {
     use HasFactory;
 
@@ -23,19 +23,9 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'firstName',
-        'lastName',
-        'email',
-        'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
+        'content',
+        'user_id',
+        'post_id',
     ];
 
     /**
@@ -45,17 +35,19 @@ class User extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'user_id' => 'integer',
+        'post_id' => 'integer',
         'created_at' => 'timestamp',
         'updated_at' => 'timestamp',
     ];
 
-    public function posts(): HasMany
+    public function user(): BelongsTo
     {
-        return $this->hasMany(Post::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function comments(): HasMany
+    public function post(): BelongsTo
     {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Post::class);
     }
 }
